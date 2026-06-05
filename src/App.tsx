@@ -82,7 +82,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-[#2c2d30] text-zinc-900 dark:text-[#f5f9ff] overflow-hidden font-sans">
+    <div className="flex h-screen w-full bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 overflow-hidden font-sans">
       <Sidebar 
         isOpen={isSidebarOpen} 
         onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -98,22 +98,22 @@ export default function App() {
         toggleDarkMode={() => setIsDarkMode(!isDarkMode)}
       />
       
-      <main className="flex-1 flex flex-col relative h-full w-full overflow-hidden">
+      <main className="flex-1 flex flex-col relative h-full w-full overflow-hidden bg-white dark:bg-zinc-950">
         {/* Mobile Header */}
         {!isSidebarOpen && isMobile && (
-          <div className="md:hidden flex items-center justify-between px-3 py-3 border-b border-black/5 dark:border-[#292d32] bg-white dark:bg-[#2c2d30] shrink-0 w-full relative z-30 shadow-sm">
+          <div className="md:hidden flex items-center justify-between px-3 py-3 border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shrink-0 w-full relative z-30 shadow-sm">
             <button 
               onClick={() => setIsSidebarOpen(true)}
-              className="p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-[#383b42] text-zinc-600 dark:text-zinc-300 transition-colors"
+              className="p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
             >
               <Menu className="w-5 h-5" />
             </button>
-            <div className="font-medium text-zinc-800 dark:text-zinc-200 text-[15px] absolute left-1/2 -translate-x-1/2 truncate max-w-[50%]">
+            <div className="font-semibold text-zinc-800 dark:text-zinc-200 text-sm absolute left-1/2 -translate-x-1/2 truncate max-w-[50%]">
               {activeConversation ? activeConversation.title : 'New chat'}
             </div>
             <button 
               onClick={handleNewChat}
-              className="p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-[#383b42] text-zinc-600 dark:text-zinc-300 transition-colors"
+              className="p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
             >
               <Plus className="w-5 h-5" />
             </button>

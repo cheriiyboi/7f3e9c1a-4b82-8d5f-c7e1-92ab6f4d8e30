@@ -31,35 +31,35 @@ export default function ModelSelector({ selectedModel, onSelect }: Props) {
   ];
 
   return (
-    <div className="flex bg-zinc-100 dark:bg-[#171717]/80 p-1 rounded-xl w-fit mx-auto border border-zinc-200 dark:border-white/5 relative z-10">
+    <div className="flex bg-zinc-100/80 dark:bg-zinc-900 p-1.5 rounded-2xl w-fit mx-auto border border-zinc-200 dark:border-zinc-800 relative z-10 shadow-sm">
       {models.map((model) => (
         <div key={model.id} className="relative" 
              onMouseEnter={() => setHoveredInfo(model.id)}
              onMouseLeave={() => setHoveredInfo(null)}>
           <button
             onClick={() => onSelect(model.id)}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-semibold transition-all w-[150px] justify-center ${
+            className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-[14px] font-semibold transition-all w-[140px] md:w-[150px] justify-center ${
               selectedModel === model.id 
-                ? 'bg-white dark:bg-[#383b42] text-zinc-900 dark:text-white shadow-sm border border-black/5 dark:border-[#4a5562]' 
-                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300'
+                ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm border border-zinc-200/50 dark:border-zinc-700' 
+                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 border border-transparent'
             }`}
           >
-            <model.icon className={`w-4 h-4 ${model.color}`} />
+            <model.icon className={`w-4 h-4 ${selectedModel === model.id ? model.color : 'text-zinc-400'} transition-colors`} />
             {model.label}
           </button>
           
           <AnimatePresence>
             {hoveredInfo === model.id && (
               <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 5, scale: 0.95 }}
                 transition={{ duration: 0.15 }}
-                className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[260px] bg-zinc-900 dark:bg-[#171717] text-white rounded-xl p-4 shadow-xl pointer-events-none border border-zinc-800"
+                className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[260px] bg-zinc-900 dark:bg-zinc-800 text-white rounded-2xl p-4 shadow-xl pointer-events-none border border-zinc-800 dark:border-zinc-700"
               >
-                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-zinc-900 dark:bg-[#171717] rotate-45 border-l border-t border-zinc-800" />
-                <p className="text-sm mb-2 relative z-10">{model.description}</p>
-                <p className="text-xs text-zinc-400 relative z-10">{model.availability}</p>
+                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-zinc-900 dark:bg-zinc-800 rotate-45 border-l border-t border-zinc-800 dark:border-zinc-700" />
+                <p className="text-sm mb-2 relative z-10 font-medium">{model.description}</p>
+                <p className="text-[13px] text-zinc-400 relative z-10">{model.availability}</p>
               </motion.div>
             )}
           </AnimatePresence>

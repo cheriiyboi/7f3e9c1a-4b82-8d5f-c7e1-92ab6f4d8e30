@@ -28,26 +28,26 @@ export default function MessageInput({ value, onChange, onSend }: Props) {
 
   return (
     <div className="w-full max-w-3xl mx-auto px-4 pt-2 pb-6">
-      <div className="relative flex items-center bg-white dark:bg-[#2f353d]/50 border border-black/10 dark:border-[#484a4e]/50 rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.05)] dark:shadow-none overflow-hidden transition-colors">
+      <div className="relative flex items-center bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-3xl shadow-sm focus-within:ring-2 focus-within:ring-black/5 dark:focus-within:ring-white/10 dark:focus-within:border-zinc-600 transition-all">
         <textarea
           ref={textareaRef}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Send a message"
-          className="w-full min-h-[52px] max-h-[200px] bg-transparent text-zinc-800 dark:text-zinc-100 placeholder:text-zinc-500 border-none focus:ring-0 resize-none py-[15px] pl-4 pr-12 text-base leading-relaxed overflow-y-auto outline-none"
+          className="w-full min-h-[56px] max-h-[200px] bg-transparent text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500 border-none focus:ring-0 resize-none py-[16px] pl-5 pr-14 text-[15px] leading-relaxed overflow-y-auto outline-none rounded-3xl"
           rows={1}
         />
         <button 
           onClick={onSend}
           disabled={!value.trim()}
-          className="absolute right-2 bottom-1.5 p-1.5 rounded-lg bg-[#19c37d] hover:bg-[#1a9a63] disabled:bg-indigo-50/50 dark:disabled:bg-white/10 disabled:text-zinc-400 dark:disabled:text-white/30 text-white transition-colors flex items-center justify-center cursor-pointer disabled:cursor-auto"
+          className="absolute right-2 bottom-2 p-2 rounded-full bg-black dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-200 disabled:bg-zinc-200 dark:disabled:bg-zinc-700 disabled:text-zinc-400 dark:disabled:text-zinc-500 text-white dark:text-black transition-colors flex items-center justify-center cursor-pointer disabled:cursor-auto"
         >
-          <Send className="w-4 h-4 ml-[-1px] mb-[-1px]" />
+          <Send className="w-4 h-4 ml-[-1px]" />
         </button>
       </div>
-      <div className="text-center text-xs text-zinc-500 dark:text-[#c9ccd1] mt-3 font-medium opacity-80">
-        This is a ChatGPT UI Clone based on the user's original HTML/CSS, improved for production with React & Tailwind.
+      <div className="text-center text-[11px] text-zinc-400 dark:text-zinc-500 mt-4 font-medium px-4">
+        ChatGPT clones are for educational purposes. This applet was enhanced in AI Studio.
       </div>
     </div>
   );
