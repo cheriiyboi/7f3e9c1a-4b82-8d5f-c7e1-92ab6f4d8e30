@@ -31,20 +31,21 @@ export default function ModelSelector({ selectedModel, onSelect }: Props) {
   ];
 
   return (
-    <div className="flex bg-zinc-100/80 dark:bg-zinc-900 p-1.5 rounded-2xl w-fit mx-auto border border-zinc-200 dark:border-zinc-800 relative z-10 shadow-sm">
+    <div className="flex bg-zinc-100/80 dark:bg-std-surface p-1.5 w-fit mx-auto border border-zinc-200 dark:border-std-border relative z-10 shadow-sm" style={{ clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))' }}>
       {models.map((model) => (
         <div key={model.id} className="relative" 
              onMouseEnter={() => setHoveredInfo(model.id)}
              onMouseLeave={() => setHoveredInfo(null)}>
           <button
             onClick={() => onSelect(model.id)}
-            className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl text-[14px] font-semibold transition-all w-[140px] md:w-[150px] justify-center ${
+            className={`flex items-center gap-2.5 px-6 py-2.5 text-[12px] uppercase font-bold tracking-[1.5px] transition-all w-[140px] md:w-[150px] justify-center font-display border ${
               selectedModel === model.id 
-                ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm border border-zinc-200/50 dark:border-zinc-700' 
-                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 border border-transparent'
+                ? 'bg-white dark:bg-std-surface2 text-zinc-900 dark:text-white shadow-sm border-zinc-200/50 dark:border-std-border-hi' 
+                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 border-transparent hover:border-zinc-200 dark:hover:border-std-border'
             }`}
+            style={{ clipPath: 'polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px))' }}
           >
-            <model.icon className={`w-4 h-4 ${selectedModel === model.id ? model.color : 'text-zinc-400'} transition-colors`} />
+            <model.icon className={`w-3.5 h-3.5 ${selectedModel === model.id ? 'text-zinc-900 dark:text-white' : 'text-zinc-400'} transition-colors`} />
             {model.label}
           </button>
           
@@ -55,11 +56,11 @@ export default function ModelSelector({ selectedModel, onSelect }: Props) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 5, scale: 0.95 }}
                 transition={{ duration: 0.15 }}
-                className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[260px] bg-zinc-900 dark:bg-zinc-800 text-white rounded-2xl p-4 shadow-xl pointer-events-none border border-zinc-800 dark:border-zinc-700"
+                className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[260px] bg-zinc-900 dark:bg-std-surface border border-zinc-800 dark:border-std-border text-white p-4 shadow-xl pointer-events-none"
+                style={{ clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))' }}
               >
-                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-zinc-900 dark:bg-zinc-800 rotate-45 border-l border-t border-zinc-800 dark:border-zinc-700" />
-                <p className="text-sm mb-2 relative z-10 font-medium">{model.description}</p>
-                <p className="text-[13px] text-zinc-400 relative z-10">{model.availability}</p>
+                <p className="text-[13px] mb-2 relative z-10 font-bold tracking-wide font-display">{model.description}</p>
+                <p className="text-[11px] text-zinc-400 relative z-10">{model.availability}</p>
               </motion.div>
             )}
           </AnimatePresence>
