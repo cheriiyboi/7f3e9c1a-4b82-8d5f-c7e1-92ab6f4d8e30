@@ -1,0 +1,6 @@
+{
+  "name": "ChatGT Demo",
+  "description": "ChatGPT UI clone with fully responsive layout, dark/light theme integration, and polished professional components.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
